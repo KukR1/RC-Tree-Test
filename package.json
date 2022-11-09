@@ -21,7 +21,7 @@
     "typescript": "3.3.3"
   },
   "scripts": {
-    "start": "react-scripts-less --openssl-legacy-provider start",
+    "start": "react-scripts-less  start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
