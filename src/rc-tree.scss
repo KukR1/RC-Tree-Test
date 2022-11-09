@@ -1,0 +1,320 @@
+// rc-tree
+.rc-tree {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	color: rgba(0, 0, 0, 0.65);
+	font-size: 14px;
+	font-variant: tabular-nums;
+	line-height: 1.5;
+	list-style: none;
+	-webkit-font-feature-settings: 'tnum';
+	font-feature-settings: 'tnum';
+	margin: 0;
+	padding: 0;
+}
+.rc-tree ol,
+.rc-tree ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.rc-tree li {
+	margin: 0;
+	padding: 4px 0;
+	white-space: nowrap;
+	list-style: none;
+	outline: 0;
+}
+.rc-tree li span[draggable],
+.rc-tree li span[draggable='true'] {
+	line-height: 20px;
+	border-top: 2px transparent solid;
+	border-bottom: 2px transparent solid;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	/* Required to make elements draggable in old WebKit */
+	-khtml-user-drag: element;
+	-webkit-user-drag: element;
+}
+.rc-tree li.drag-over > span[draggable] {
+	color: white;
+	background-color: #1890ff;
+	opacity: 0.8;
+}
+.rc-tree li.drag-over-gap-top > span[draggable] {
+	border-top-color: #1890ff;
+}
+.rc-tree li.drag-over-gap-bottom > span[draggable] {
+	border-bottom-color: #1890ff;
+}
+.rc-tree li.filter-node > span {
+	color: #f5222d !important;
+	font-weight: 500 !important;
+}
+.rc-tree li.rc-tree-treenode-loading span.rc-tree-switcher.rc-tree-switcher_open .rc-tree-switcher-loading-icon,
+.rc-tree li.rc-tree-treenode-loading span.rc-tree-switcher.rc-tree-switcher_close .rc-tree-switcher-loading-icon {
+	position: absolute;
+	left: 0;
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	color: #1890ff;
+	font-size: 14px;
+	-webkit-transform: none;
+	-ms-transform: none;
+	transform: none;
+}
+.rc-tree li.rc-tree-treenode-loading span.rc-tree-switcher.rc-tree-switcher_open .rc-tree-switcher-loading-icon svg,
+.rc-tree li.rc-tree-treenode-loading span.rc-tree-switcher.rc-tree-switcher_close .rc-tree-switcher-loading-icon svg {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+}
+:root .rc-tree li.rc-tree-treenode-loading span.rc-tree-switcher.rc-tree-switcher_open::after,
+:root .rc-tree li.rc-tree-treenode-loading span.rc-tree-switcher.rc-tree-switcher_close::after {
+	opacity: 0;
+}
+.rc-tree li ul {
+	margin: 0;
+	padding: 0 0 0 18px;
+}
+.rc-tree li .rc-tree-node-content-wrapper {
+	display: inline-block;
+	height: 24px;
+	margin: 0;
+	padding: 0 5px;
+	color: rgba(0, 0, 0, 0.65);
+	line-height: 24px;
+	text-decoration: none;
+	vertical-align: top;
+	border-radius: 2px;
+	cursor: pointer;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.rc-tree li .rc-tree-node-content-wrapper:hover {
+	background-color: #e6f7ff;
+}
+// .rc-tree li .rc-tree-node-content-wrapper.rc-tree-node-selected {
+	// background-color: #bae7ff;
+// }
+.rc-tree li span.rc-tree-checkbox {
+	margin: 4px 4px 0 2px;
+}
+.rc-tree li span.rc-tree-switcher,
+.rc-tree li span.rc-tree-iconEle {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	margin: 0;
+	line-height: 24px;
+	text-align: center;
+	vertical-align: top;
+	border: 0 none;
+	outline: none;
+	cursor: pointer;
+}
+.rc-tree li span.rc-tree-switcher {
+	position: relative;
+}
+.rc-tree li span.rc-tree-switcher.rc-tree-switcher-noop {
+	cursor: default;
+}
+.rc-tree li span.rc-tree-switcher.rc-tree-switcher_open .rc-tree-switcher-icon,
+.rc-tree li span.rc-tree-switcher.rc-tree-switcher_open .ant-select-switcher-icon {
+	font-size: 12px;
+	font-size: 10px \9;
+	-webkit-transform: scale(0.83333333) rotate(0deg);
+	-ms-transform: scale(0.83333333) rotate(0deg);
+	transform: scale(0.83333333) rotate(0deg);
+	display: inline-block;
+	font-weight: bold;
+}
+:root .rc-tree li span.rc-tree-switcher.rc-tree-switcher_open .rc-tree-switcher-icon,
+:root .rc-tree li span.rc-tree-switcher.rc-tree-switcher_open .ant-select-switcher-icon {
+	font-size: 12px;
+}
+.rc-tree li span.rc-tree-switcher.rc-tree-switcher_open .rc-tree-switcher-icon svg,
+.rc-tree li span.rc-tree-switcher.rc-tree-switcher_open .ant-select-switcher-icon svg {
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+	transition: transform 0.3s, -webkit-transform 0.3s;
+}
+.rc-tree li span.rc-tree-switcher.rc-tree-switcher_close .rc-tree-switcher-icon,
+.rc-tree li span.rc-tree-switcher.rc-tree-switcher_close .ant-select-switcher-icon {
+	font-size: 12px;
+	font-size: 10px \9;
+	-webkit-transform: scale(0.83333333) rotate(0deg);
+	-ms-transform: scale(0.83333333) rotate(0deg);
+	transform: scale(0.83333333) rotate(0deg);
+	display: inline-block;
+	font-weight: bold;
+}
+:root .rc-tree li span.rc-tree-switcher.rc-tree-switcher_close .rc-tree-switcher-icon,
+:root .rc-tree li span.rc-tree-switcher.rc-tree-switcher_close .ant-select-switcher-icon {
+	font-size: 12px;
+}
+.rc-tree li span.rc-tree-switcher.rc-tree-switcher_close .rc-tree-switcher-icon svg,
+.rc-tree li span.rc-tree-switcher.rc-tree-switcher_close .ant-select-switcher-icon svg {
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+	transition: transform 0.3s, -webkit-transform 0.3s;
+}
+.rc-tree li span.rc-tree-switcher.rc-tree-switcher_close .rc-tree-switcher-icon svg {
+	-webkit-transform: rotate(-90deg);
+	-ms-transform: rotate(-90deg);
+	transform: rotate(-90deg);
+}
+.rc-tree li:last-child > span.rc-tree-switcher::before,
+.rc-tree li:last-child > span.rc-tree-iconEle::before {
+	display: none;
+}
+.rc-tree > li:first-child {
+	padding-top: 7px;
+}
+.rc-tree > li:last-child {
+	padding-bottom: 7px;
+}
+.rc-tree-child-tree {
+	display: none;
+}
+.rc-tree-child-tree-open {
+	display: block;
+}
+.rc-tree-child-tree > li:first-child {
+	padding-top: 8px;
+}
+.rc-tree-child-tree > li:last-child {
+	padding-bottom: 0;
+}
+li.rc-tree-treenode-disabled > span:not(.rc-tree-switcher),
+li.rc-tree-treenode-disabled > .rc-tree-node-content-wrapper,
+li.rc-tree-treenode-disabled > .rc-tree-node-content-wrapper span {
+	color: rgba(0, 0, 0, 0.25);
+	cursor: not-allowed;
+}
+li.rc-tree-treenode-disabled > .rc-tree-node-content-wrapper:hover {
+	background: transparent;
+}
+.rc-tree-icon__open {
+	margin-right: 2px;
+	vertical-align: top;
+}
+.rc-tree-icon__close {
+	margin-right: 2px;
+	vertical-align: top;
+}
+.rc-tree.rc-tree-show-line li {
+	position: relative;
+}
+.rc-tree.rc-tree-show-line li span.rc-tree-switcher {
+	color: rgba(0, 0, 0, 0.45);
+	background: #fff;
+}
+.rc-tree.rc-tree-show-line li span.rc-tree-switcher.rc-tree-switcher-noop .rc-tree-switcher-icon,
+.rc-tree.rc-tree-show-line li span.rc-tree-switcher.rc-tree-switcher-noop .ant-select-switcher-icon {
+	display: inline-block;
+	font-weight: normal;
+	font-size: 12px;
+}
+.rc-tree.rc-tree-show-line li span.rc-tree-switcher.rc-tree-switcher-noop .rc-tree-switcher-icon svg,
+.rc-tree.rc-tree-show-line li span.rc-tree-switcher.rc-tree-switcher-noop .ant-select-switcher-icon svg {
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+	transition: transform 0.3s, -webkit-transform 0.3s;
+}
+.rc-tree.rc-tree-show-line li span.rc-tree-switcher.rc-tree-switcher_open .rc-tree-switcher-icon,
+.rc-tree.rc-tree-show-line li span.rc-tree-switcher.rc-tree-switcher_open .ant-select-switcher-icon {
+	display: inline-block;
+	font-weight: normal;
+	font-size: 12px;
+}
+.rc-tree.rc-tree-show-line li span.rc-tree-switcher.rc-tree-switcher_open .rc-tree-switcher-icon svg,
+.rc-tree.rc-tree-show-line li span.rc-tree-switcher.rc-tree-switcher_open .ant-select-switcher-icon svg {
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+	transition: transform 0.3s, -webkit-transform 0.3s;
+}
+.rc-tree.rc-tree-show-line li span.rc-tree-switcher.rc-tree-switcher_close .rc-tree-switcher-icon,
+.rc-tree.rc-tree-show-line li span.rc-tree-switcher.rc-tree-switcher_close .ant-select-switcher-icon {
+	display: inline-block;
+	font-weight: normal;
+	font-size: 12px;
+}
+.rc-tree.rc-tree-show-line li span.rc-tree-switcher.rc-tree-switcher_close .rc-tree-switcher-icon svg,
+.rc-tree.rc-tree-show-line li span.rc-tree-switcher.rc-tree-switcher_close .ant-select-switcher-icon svg {
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+	transition: transform 0.3s, -webkit-transform 0.3s;
+}
+.rc-tree.rc-tree-show-line li:not(:last-child)::before {
+	position: absolute;
+	left: 12px;
+	width: 1px;
+	height: 100%;
+	margin: 22px 0;
+	border-left: 1px solid #d9d9d9;
+	content: ' ';
+}
+.rc-tree.rc-tree-icon-hide .rc-tree-treenode-loading .rc-tree-iconEle {
+	display: none;
+}
+.rc-tree.rc-tree-block-node li .rc-tree-node-content-wrapper {
+	width: calc(100% - 24px);
+}
+.rc-tree.rc-tree-block-node li span.rc-tree-checkbox + .rc-tree-node-content-wrapper {
+	width: calc(100% - 46px);
+}
+
+// Custom rc-tree styles
+
+.rc-tree li {
+	padding: 0;
+	margin: 0;
+}
+
+.rc-tree li ul {	
+	padding: 0 0 0 15px;
+}
+
+.rc-tree-child-tree > li:first-child {
+	padding-top: 0;
+}
+
+.rc-tree li span.rc-tree-switcher, .rc-tree li span.rc-tree-iconEle {	
+	width: 16px;	
+}
+
+.rc-tree li span.rc-tree-iconEle {	
+	margin-right: 1px;
+	line-height: 25px;
+	vertical-align: middle;	
+}
+
+.rc-tree li .rc-tree-node-content-wrapper {
+	padding-left: 0;	
+	height: 20px;	
+}
+
+.rc-tree li .rc-tree-node-content-wrapper.rc-tree-node-selected .rc-tree-title {
+	background-color: #bae7ff;
+}
+
+.rc-tree-title {
+	padding: 0 3px;
+}
+
+.rc-tree ul.rc-tree-child-tree li span.rc-tree-switcher.rc-tree-switcher-noop { 
+    width: 8px;
+}
+
