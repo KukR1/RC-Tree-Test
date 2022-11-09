@@ -1,7 +1,8 @@
 /* eslint-disable no-console, react/no-access-state-in-setstate */
 ////@ts-nocheck
 import React, { useState } from 'react';
-import { gData } from './util';
+/* import { gData } from './util'; */
+import gData from './data.js';
 import Tree, { TreeNode } from 'rc-tree';
 import { DataType, ChildrenType } from './types';
 
